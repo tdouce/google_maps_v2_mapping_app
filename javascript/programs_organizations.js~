@@ -1,0 +1,94 @@
+
+$(document).ready(function(){
+
+    // Use this if we are using chosen.js for the option selects, not
+    // even sure if it will work
+    $(".chzn-select").chosen();
+
+    // Makes any href link inside the <tr> respond to the href click rather (so they can visit the
+    // associated link) than the opening or hovering events. 
+     $('tr a').click(function(e){
+        e.stopPropagation(); 
+    })
+
+    // Hilight the organization's name when hovering over it
+    // Add pointer cursor when hovering too
+    $("td").hover(
+      function () {
+        $(this).css({ 'background-color':'#F0F8FF', 'cursor':'pointer'});
+      }, 
+      function () {
+        $(this).css('background-color','');
+      }
+    );
+   
+
+    // Hide all organization description information.
+    // Open explanition div when user clicks on it and close when click it again
+    $(".hide").hide();
+    // You have to check to see if it is hidden or visible so that the click either opens or closes
+    // the div appropriately.  If you used 'toggle', then the user has to, in some instances, click
+    // the table row twice to get the desired effect.
+    $('td').click(
+        function() {
+            if ( $(this).find('.hide').is(':visible') == false )
+                {
+                    $(this).find('.hide').fadeIn('slow');
+                    $(this).addClass('hover_hilight');
+                }
+            else
+                {
+                    $(this).find('.hide').fadeOut('medium');
+                    $(this).removeClass('hover_hilight');
+                };
+        }
+    ); 
+
+
+
+     // Hilight 'show/hide all' text and add pointer cursor
+     // when hovering over it
+    $(".hide_all, .back_to_top").hover(
+      function () {
+        $(this).css({ 'color':'#06C','cursor':'pointer' });
+      }, 
+      function () {
+        $(this).css('color','');
+      }
+    );
+   
+    // Hide all or show all organization descriptions when user
+    // clicks the 'Show / Hide All' text 
+   $('.hide_all').toggle(
+        function() {
+            $('.hide').show();
+            $('td').addClass('hover_hilight');
+        },
+        function() {
+            $('.hide').hide();
+            $('td').removeClass('hover_hilight');
+        }
+    ); 
+
+
+   // On Hover, when 'Back To Top' make it blue and makd the cursor a pointer
+ //   $(".back_to_top").hover(
+ //     function () {
+ //       $(this).css({ 'color':'#06C','cursor':'pointer' });
+ //     }, 
+ //     function () {
+ //       $(this).css('color','');
+ //     }
+ //   );
+
+    // When "Back To Top" is clicked scroll to top of page
+    $('.back_to_top').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 'slow');
+    });
+
+   // $(".click").click(function () { 
+   //   //$(this).slideUp(); 
+   //   alert( $(this).closest('.hide').attr('class') );
+   // });
+   
+});

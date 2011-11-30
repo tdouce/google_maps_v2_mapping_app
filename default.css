@@ -1,0 +1,234 @@
+/*#############################################################
+Name: Indigo
+Description: A lightweight (7kb images), simple and professional design.
+Date: 2006-07-27
+Author: Viktor Persson
+URL: http://arcsin.se
+
+Feel free to use and modify but please provide credits.
+#############################################################*/
+
+/* standard elements */
+
+html {
+	height: 100.1%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: #239d4a;
+}
+a:hover {
+	color: red;
+}
+body {
+	background: #0094D6 url(img/bg.gif) repeat-x;
+	color: #466;
+	font: normal 62.5% "Lucida Sans Unicode",sans-serif;
+	margin: 0;
+}
+p {
+	font-size: 1.2em;
+	padding-bottom: 1.2em;
+}
+h1 {
+	font-size: 1.5em;
+	margin-bottom: 4px;
+}
+
+h1,h2,h3 {
+	color: #06C;
+	padding-top: 6px;
+}
+/* misc */
+.clearer {
+	clear: both;
+}
+
+/* structure */
+.container {
+	background: url(img/watershed_9_topleft.gif) no-repeat;
+        /*border: 2px solid green;*/
+}
+
+.header {
+	height: 92px;
+        /*border: 10px solid green;*/
+}
+
+
+/* title */
+
+.title {
+	float: left;
+	padding: 15px 0 0 130px;
+}
+.title h1 {
+	color: #FFF;
+	font: normal 2em Verdana,sans-serif;
+}
+
+
+/* navigation */
+.navigation {
+	float: left;
+	height: 92px;
+        /*margin-left: 55px;*/
+	margin-left: 75px;
+        padding: 0 16px;
+}
+.navigation a {
+	color: #FFF;
+	float: left;
+	font: bold 1.2em "Trebuchet MS",sans-serif;
+	margin-top: 56px;
+	padding: 8px 18px;
+	text-align: center;
+	text-decoration: none;
+}
+.navigation a:hover {
+	background-color: #4A91C3;
+	color: #FFF;
+}
+
+/* main */
+
+.main {
+	background: #FFF url(img/bgmain.gif) no-repeat;
+	clear: both;
+	padding: 20px 12px 0 52px;
+        /*border: 2px solid blue;*/ }
+
+
+/* content */
+.content {
+	float: left;
+	margin-right: 4%;
+	/*width: 69%;*/
+        width: 85%;
+        padding: 20px 0 65px 0; /* Increase bottom padding to decrease the footer size */
+        /*border: 2px solid red;*/
+}
+
+
+/*
+.main .content .nps_logo {
+    float: left;
+    margin: 45px 0 0 25px;
+    height: 117px;
+    width: 33%;
+    text-align: center;
+}
+    */
+
+
+.top_form_descriptions { 
+    margin: 20px 0 20px 60px; 
+}
+
+
+/* footer */
+.footer {
+	background: #0094D6 url(img/bgfooter.gif) repeat-x;
+	color: #C1DEF0;
+	font-size: 1.1em;
+	line-height: 100px;
+	text-align: center;
+        /*border: 1px solid red;*/
+}
+
+.logoholder {
+    height: 90px;
+    width: 310px;
+    margin-left: auto;
+    margin-right: auto;
+    /*border: 10px solid black;*/
+    padding: 15px 0 0 0;
+}
+
+.footer .logoholder .npslogo {
+    float: left;
+    height: 80px;
+    width: 150px;
+    /*border: 2px solid red;*/
+}
+
+.footer .logoholder .gcrclogo {
+    float: left;
+    height: 80px;
+    width: 150px;
+    /*border: 2px solid red;*/
+    padding: 7px 0 0 0;
+}
+
+.footer a {
+	color: #FFF;
+	text-decoration: none;
+}
+.footer a:hover {
+	color: #FFF;
+	text-decoration: underline;
+}
+
+
+
+/* Forms */
+
+
+.form_container  {
+	border-collapse: collapse;
+	background-color: #F0F8FF;
+	border: 6px solid #d6e8ee;
+        border-radius: 15px;
+	padding: 25px 0 25px 0;	
+	width: 80%;
+	margin: 0 0 0 10%;
+}
+
+table.forms { width: 85%; text-align: left; }
+
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto 0 auto;
+    }
+
+h4,h5,h6 {
+	font-size: 11px;
+}
+input, select, textarea {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	margin: 0;
+}
+input, textarea {
+	padding: 1px 3px 1px 3px;
+}
+form {
+	margin: 0;
+	padding: 0;
+}
+th,td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	padding: 3px;
+}
+strong {
+	font-weight: bold;
+}
+hr {
+	height: 2px;
+	color: #4682B4;
+	background-color: #4682B4;
+	padding: 0;
+	border: 0;
+	text-align: center;
+}
+
+.required { background-color: #FFFFDD; }
+
+
+

@@ -1,0 +1,67 @@
+
+#bookmarks {  
+            padding: 25px 0 25px 30px; 
+            border-bottom: 3px solid #d6e8ee;
+            border-top: 3px solid #d6e8ee;
+            color: #06C;
+	    font-weight: bold;
+            width: 100%;
+            background-color: #F0F8FF;
+            font-size: 14px;
+        }
+
+.bookmarks_text {
+    float: left; 
+    padding: 4px 8px 0 0;
+    color: #06C;
+    font-size: 14px;
+}
+
+.to_top_text {
+    margin: 0 10px 0 0;
+    font-weight: bold;
+    
+}
+
+.org em {
+	font-weight: bold;
+	font-style: italic;
+        color: #06C;
+}
+
+.hover_hilight { 
+    border-collapse: collapse; 
+    background-color: #F0F8FF; 
+    border: 4px solid #d6e8ee;  
+}
+	
+.hide_all { 
+    float: right; 
+    padding: 10px 0 30px 0; 
+    color: grey;
+}
+	
+.back_to_top { 
+    float: right; 
+    padding: 40px 0 30px 0; 
+    color: grey;
+}
+
+.org_name { 
+    color: #06C;
+    font: bold; 
+    font-size: 16px;
+    margin: 20px 0 0 5px;
+}
+
+.description_holder {
+    margin: 10px 0 0 30px;
+    left: 0px;
+    top: 0px;
+}
+
+td { 
+    border-bottom: 3px solid #d6e8ee; 
+    border-top: 3px solid #d6e8ee;
+}
+

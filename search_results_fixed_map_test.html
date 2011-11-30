@@ -1,0 +1,1285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+<meta name="description" content="description"/>
+<meta name="keywords" content="keywords"/> 
+<meta name="author" content="author"/> 
+<link rel="stylesheet" type="text/css" href="css/default.css" media="screen"/>
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon_3.ico">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
+<script src="javascript/search_results.js" type="text/javascript"></script>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAKaF4NTm0UopY1vwueqrqSxQS5vxYPP28q7HiFnL_QJ594kLJUhSdfnYawePq7ENP3D-TeELHIZ_4AQ" type="text/javascript"></script>
+
+<title>Search Results</title>
+
+<style type="text/css">
+
+.content {
+    width: 95%;
+    height: 100%;
+}
+
+.content table.db-table { 
+    border-top: 2px solid #06C; 
+    border-bottom: 2px solid #06C; 
+    /*border: 1px solid red;*/
+    margin: 0 auto 0 auto; 
+    width: 95%; 
+    text-align: left; 
+}
+
+.content table.db-table th { 
+    font-weight: bold; 
+    border-bottom: 1px solid #06C; 
+    text-align: center; 
+}
+
+.content em { margin-left: 
+    5px; color: #3366FF; 
+    font-style: italic; 
+}
+
+.content form { margin: 0; }
+
+.description_holder {
+    padding: 20px 5px 0 5px;
+}
+
+em {
+    font-weight: bold;
+    font-style: italic;
+    color: #06C;
+}
+
+#form_container_extra {
+    width: 50%; 
+    margin-left: 20px;
+    border-collapse: collapse;
+    background-color: #F0F8FF;
+    border: 6px solid #d6e8ee;
+    border-radius: 15px;
+    padding: 25px 0 25px 0;	
+    margin: 0 0 0 3%;
+}
+
+#site { 
+    padding: 0; 
+    border-collapse: collapse; 
+}
+
+#site th, #site td { 
+    vertical-align: top; 
+    text-align: left; 
+    border-bottom: 1px solid #F0F8FF; 
+    padding: 8px; 
+}
+
+#site th { 
+    width: 16%; 
+    font-weight: bold; 
+    white-space: nowrap; 
+    color: #06C;
+}
+
+#site td { width: 84%; }
+
+#site th.lastrow, #site td.lastrow { height:1px; padding:0 }
+
+#parameters th, #parameters td { 
+    width: 14.28%; 
+    padding: 0 6px 3px 6px; 
+    font-size: 11px; 
+    text-align: center; 
+    border-bottom: 1px solid #F0F8FF; 
+}
+
+#parameters td.nowrap { white-space: nowrap; }
+
+#map_cont_slide {
+    position: fixed;
+    top: 20.5%;
+    right: 6%;
+    /*border: 1px solid blue;*/
+    width: 37%;
+    height: 490px;
+}
+
+#map-container {
+    padding: 6px;
+    border-width: 1px;
+    border-style: solid;
+    border: 6px solid #d6e8ee;
+    border-radius: 15px;
+    height: 100%; 
+    width: 100%;
+}
+
+#map {
+    height: 420px; 
+    width: 100%;
+}
+
+.showhide_text{
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.showhide_text_table{
+    font-weight: bold;
+    font-size: 13px;
+    margin-bottom: 10px;
+    float: right;
+    margin-right: 10%;
+} 
+
+.map_td {
+    height: 100%;
+    background-color: #d6e8ee;
+    border-left: 2px solid #06C;
+    border-right: 2px solid #06C;
+    border-bottom: 2px solid #06C;
+}
+
+.map {
+    height: 400px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 8px solid white;
+    padding: 3px;
+    width: 90%;
+}
+
+.map_selected {
+    background-color: #d6e8ee;
+    border-left: 2px solid #06C;
+    border-right: 2px solid #06C;
+    border-top: 2px solid #06C;
+}
+
+
+.controls {
+    font-weight: bold;
+    margin-top: 15px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#show_all_maps_input {
+    margin-top: 10px; 
+    margin-bottom: 15px;
+    margin-left: 28px;
+    font-size: 11px;
+}
+
+#show_all_maps_text {
+    font-size: 12px;
+    font-weight: normal;
+    margin: 0 0 5px 5px;
+}
+
+.control_divider{
+    color: white;
+    font-weight; bold;
+}
+
+#to_full_extent { 
+    text-align: center; margin-top: 8px;
+}
+
+
+</style>
+
+</head>
+
+<body   >
+
+<div class="container">
+
+    <div class="header">
+            
+        <div class="title">
+            <h1>SE Coastal Water Quality <br />
+                Monitoring Metadata Project</h1>
+        </div>
+
+        
+        <div class="navigation">
+                <a href="index.html">Home</a>
+                <a href="organizations.html">Organizations</a>
+                <a href="programs.html">Programs</a>
+                <a href="site_search.html">Site Search</a>
+                <a href="workshop.html">Workshop</a>
+                <a href="webservices.html">Web Services</a>
+
+        <div class="clearer">
+            <span>
+            </span>
+        </div>
+        </div><!-- close .navigation -->
+    </div><!-- close .header -->
+
+    <div class="main"><!-- Start page conent -->
+            
+        <div class="content">
+
+            <!--  Above this is for template -->
+
+            <div class="top_form_descriptions">
+	        <h1>Search Results</h1>
+            </div>
+            
+            <div id="map_cont_slide" >
+                <div id="map-container" >
+                    <p class="showhide_text">All Results | <span id="all_results_map" class="all_results" >Show / Hide</span>
+                    <span id="download_text">
+                        <span style="float: right;">Download | <span class="all_results">Kml </span>/
+                        <span class="all_results">Shapefile  </span> </span>
+                    </span>
+                    </p>
+                    <!--<div id="map_holder" style="position:relative" >-->
+                    <div id="map_holder" >
+                      <!--<div id="map" style="position:absolute;left:0;top:0;" ><p>Google map of all results for this page.</p></div>-->
+                        <div id="map" ><p>Google map of all results for this page.</p></div>
+                    </div>
+                    <p id="to_full_extent"  class="showhide_text" style=" text-align: center;margin-top: 8px"  >Zoom to full extent</p>
+                </div>
+            </div>
+
+            <div id="form_container_extra"  >
+
+
+                <div class ="showhide_text_table" style="">
+                    <span id="all_results_table_show" class="all_results">Show </span>/ <span
+                    id="all_results_table_hide" class="all_results"> Hide All</span> 
+                    <br />
+                    <input label="test" id="show_all_maps_input" type="checkbox"  /><span id="show_all_maps_text"> Hide all maps </span> 
+                </div> 
+                     
+                  </tr>
+                 <table  class="db-table">
+                  
+                  <tr>
+                    <th class="db-head">Organization</th>
+                    <!-- <th class="db-head">Site Code</th> -->
+                    <th class="db-head">Site Name</th>
+                    <!--
+                    <th class="db-head" style="white-space: nowrap">State</th>
+                    <th class="db-head" style="white-space: nowrap">County</th>
+                    -->
+                    <th class="db-head">Dates</th>
+                    <!--
+                    <th class="db-head">Latitude</th>
+                    <th class="db-head">Longitude</th>
+                    -->
+
+                  </tr>
+                  <tr class="hover" id="1" data-name="Kingsley Plantation (Dock)">
+                      <td><a href="http://www.google.com">CAMA NE</a>
+                      </td>
+                    <!-- <td><a href="station_details_map.asp?id=89">KPD_04</a></td> -->
+                    <td>Kingsley Plantation (Dock)</td>
+                    <!--
+                    <td style="white-space: nowrap">Florida</td>
+                    <td style="white-space: nowrap">Duval</td>
+                    -->
+                    <td style="text-align: center">01/29/2004&nbsp;- present</td>
+                    <!--
+                    <td>30.44115</td>
+                    <td>-81.43903</td>
+                    -->
+                  
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+
+                          <!--<div class="map" id="map_canvas_1" style=""></div>-->
+                          <div class="map" id="map_canvas_1" style="" data-lat="33.965" data-long="-83.398"></div>
+                          <div class="description_holder">
+
+                              
+                            
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                            </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+                  <tr class="hover" id="2" data-name="Clapboard Creek">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <!--<td><a href="station_details_map.asp?id=90">CC_04</a></td>-->
+                    <td>Clapboard Creek</td>
+                    <!--
+                    <td style="white-space: nowrap">Florida</td>
+                    <td style="white-space: nowrap">Duval</td>
+                    -->
+                    <td style="text-align: center">09/30/2004&nbsp;- present</td>
+                    <!--
+                    <td>30.44942</td>
+                    <td>-81.52267</td>
+                    -->
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+                          <!--<div class="map" id="map_canvas_2" style=""></div>-->
+
+                          <div class="map" id="map_canvas_2" style="" data-lat="33.826" data-long="-83.335"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                            </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+                  <tr class="hover" id="3" data-name="Lofton Creek">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <!--<td><a href="station_details_map.asp?id=91">LC_05</a></td>-->
+                    <td>Lofton Creek</td>
+                    <!--
+                    <td style="white-space: nowrap">Florida</td>
+                    <td style="white-space: nowrap">Nassau</td>
+                    -->
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                    <!--
+                    <td>30.54750</td>
+                    <td>-81.55278</td>
+                    -->
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+                          <!--<div class="map" id="map_canvas_3" style=""></div>-->
+
+                          <div class="map" id="map_canvas_3" style="" data-lat="33.867" data-long="-83.418"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+                <tr class="hover" id="4"  data-name="Alpharetta 2 Nnw">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a>
+                    
+                    <div id="test"></div><!-- Take out -->
+                    
+                    </td>
+                    <!--<td><a href="station_details_map.asp?id=91">LC_05</a></td>-->
+                    <td>Alpharetta 2 Nnw</td>
+                    <!--
+                    <td style="white-space: nowrap">Florida</td>
+                    <td style="white-space: nowrap">Nassau</td>
+                    -->
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                    <!--
+                    <td>30.54750</td>
+                    <td>-81.55278</td>
+                    -->
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+                          <!--<div class="map" id="map_canvas_3" style=""></div>-->
+
+                          <div class="map" id="map_canvas_4" style="" data-lat="34.11677" data-long="-84.00"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+                <tr class="hover" id="5" data-name="Camp Mitchell">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <!--<td><a href="station_details_map.asp?id=91">LC_05</a></td>-->
+                    <td>Camp Mitchell</td>
+                    <!--
+                    <td style="white-space: nowrap">Florida</td>
+                    <td style="white-space: nowrap">Nassau</td>
+                    -->
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                    <!--
+                    <td>30.54750</td>
+                    <td>-81.55278</td>
+                    -->
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+                          <!--<div class="map" id="map_canvas_3" style=""></div>-->
+
+                          <div class="map" id="map_canvas_5" style="" data-lat="33.750" data-long="-84.38333"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+
+                <tr class="hover" id="6" data-name="Atlanta 6 Sw">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <td>Atlanta 6 Sw</td>
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+
+                          <div class="map" id="map_canvas_6" style="" data-lat="33.71667" data-long="-84.48333"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+
+
+                <tr class="hover" id="7" data-name="Saint Lucie Estuary at Channel Marker 9">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <td>Saint Lucie Estuary at Channel Marker 9</td>
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+
+                          <div class="map" id="map_canvas_7" style="" data-lat="27.23974" data-long="-80.31247"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+
+                <tr class="hover" id="8" data-name="North Fork St Lucie Prima Vista Br">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <td>North Fork St Lucie Prima Vista Br</td>
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+
+                          <div class="map" id="map_canvas_8" style="" data-lat="27.32378" data-long="-80.32944"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+
+
+
+                <tr class="hover" id="9" data-name="Hidden river at mouth, near jct with C23">
+                    <td><a href="org_details.asp?id=16">CAMA NE</a></td>
+                    <td>Hidden river at mouth, near jct with C23</td>
+                    <td style="text-align: center">07/01/2005&nbsp;- present</td>
+                  </tr>
+
+                  <tr class="show_point">
+                      <td class="map_td" colspan="3" style="">
+
+                          <div class="map" id="map_canvas_9" style="" data-lat="27.19855" data-long="-80.29247"></div>
+                          <div class="description_holder">
+  
+                            <table id="site">
+                              <tr>
+                                <th scope="row">Site/Station</th>
+                                <td>090219 - Alpharetta 4 Ssw</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Organization</th>
+                                <td><a href="org_details.asp?id=22">NOAA NWS</a> - NOAA National Weather Service</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Program</th>
+                                <td><a href="program_details.asp?id=43">NWS Cooperative Observer Program</a></td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Location</th>
+
+                                <td>Alpharetta 4 Ssw, Fulton county, Georgia, Fulton county, Georgia</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Coordinates</th>
+                                <td>34.10139&deg; N, -84.35056&deg; W</td>
+
+                              </tr>
+                              <tr>
+                                <th scope="row">Date Range</th>
+                                <td>Jan 01, 1901 to the present (last updated Sep 16, 2010)</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Web Links</th>
+
+                                <td>Web Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219</a><br/>Data Page: <a href="http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE">http://www4.ncdc.noaa.gov/cgi-win/wwcgi.dll?wwDI~StnSrch~COOPID~090219#ONLINE</a></td>
+                              </tr>
+                              <tr style="border-bottom: 2px solid #d6e8ee;">
+                                <th scope="row">Parameters</th>
+                                <td style="text-align:left">
+                                  <table id="parameters">
+                                    <tr>
+                                       <th>Type</th>
+
+                                       <th>Name</th>
+                                       <th>Category</th>
+                                       <th>Alias</th>
+                                       <th>Tags</th>
+                                       <th>Probabilistic</th>
+                                       <th>Storet Code</th>
+
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Precipitation</td>
+                                      <td>Precipitation</td>
+                                      <td>Prcp</td>
+                                      <td></td>
+
+                                      <td>no</td>
+                                      <td>00045</td>
+                                    </tr>
+                                    <tr>
+                                      <td>meteorology</td>
+                                      <td>Temperature</td>
+                                      <td>Temperature</td>
+
+                                      <td>Tobs</td>
+                                      <td></td>
+                                      <td>no</td>
+                                      <td>00021</td>
+                                    </tr>
+                                  </table>
+                                </td>
+
+                              </tr>
+                          </table>
+                          <p class="controls">
+                            <span class="close">Close </span><span class="control_divider"> |  </span>
+                            <span class="hide_this_map">Hide/Show this map</span><span class="control_divider" > |  </span>
+                            <span class="back_to_top"> Back to top </span>
+                          </p>
+                          </div>
+                      </td>
+                  </tr>
+
+
+
+
+                  </table>
+
+
+
+
+                    <div >
+                      <table style="margin: 10px auto 0 auto; width: 50%">
+                        <tr id="last">
+                          <td style="width: 50%; padding: 6px 0px 0px 0px">44057 Records</td>
+                          <td style="width: 50%; padding: 6px 0px 0px 0px; text-align: right">
+                            <form method="post" action="search_results.asp" style="margin-top: 0; margin-bottom: 0">
+                              <input type="hidden" name="Programs" value="30,31,41,5,42,10,11,21,20,17,39,40,4,38,37,43,16,3,2,1" />
+                              <input type="hidden" name="TypeCode" value="" />
+
+                              <input type="hidden" name="NumTypes" value="6" />
+                              <input type="hidden" name="Probabilistic" value="either" />
+                              <input type="hidden" name="SiteName" value="" />
+                              <input type="hidden" name="DateStart" value="" />
+                              <input type="hidden" name="DateEnd" value="" />
+                              <input type="hidden" name="HUC" value="" />
+                              <input type="hidden" name="Parameter" value="" />
+                              <input type="hidden" name="North" value="" />
+                              <input type="hidden" name="South" value="" />
+
+                              <input type="hidden" name="West" value="" />
+                              <input type="hidden" name="East" value="" />
+                              <input type="hidden" name="MaxRows" value="25" />
+                              <input type="hidden" name="SortCol" value="OrgName,SiteCode" />
+                              <input type="hidden" value="1" name="PageNum" />
+                              <input class="page" type="button" value="|&lt;" name="" style="padding: 0px 4px 0px 4px; margin-right: 1px; color:white" /><input class="page" type="button" value="&lt;" name="" style="padding: 0px 4px 0px 4px; margin-right: 1px; color:white" /><input class="page" type="submit" value="&gt;" name="Submit" title="Next page" style="padding: 0px 4px 0px 4px; margin-right: 1px; color:black" /><input class="page" type="submit" value="&gt;|" name="Submit" title="Last page" style="padding: 0px 4px 0px 4px; margin-right: 1px; color:black" />
+                            </form>
+                          </td>
+                        </tr>
+
+                      </table>
+                    </div>
+
+
+
+
+              
+
+            </div><!-- close .form_container -->
+
+
+                  
+
+            <!--  Below this is for template -->
+
+        </div><!-- close .content -->
+
+        <div class="clearer">
+
+            <span></span>
+        </div><!-- close .clearer -->
+
+
+    </div><!-- close .main -->
+
+</div><!-- close .container -->
+
+<div class="footer">
+    <div class="logoholder">
+        <div class="npslogo">
+            <img src="img/NPS_logo.gif" alt="NPS Logo" width="55" height="72" />
+
+        </div>
+
+        <div class="gcrclogo">
+            <img src="img/gcrc_logo_small.gif" alt="GCRC Logo" width="112" height="49" />
+        </div>
+    </div><!-- close .logoholder -->
+</div><!-- close .footer -->
+
+</body>
+
+</html>
+
