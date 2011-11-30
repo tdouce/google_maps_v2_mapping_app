@@ -1,0 +1,3 @@
+Google maps v2 mapping application.  JQuery parses a json file to populate the google map.  The html
+"communicates" with the map so that when you interact with a feature in the html the cooresponding
+google maps marker responds, and vice versa.
